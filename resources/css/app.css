@@ -1,0 +1,74 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+
+@theme {
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol', 'Noto Color Emoji';
+}
+
+@layer components {
+  .form-wrapper {
+    @apply mx-auto px-6 py-12 bg-white shadow-lg rounded-2xl;
+  }
+
+  .form-section {
+    @apply border-b border-gray-100 pb-12 mb-12 last:border-b-0 last:mb-0;
+  }
+
+  .form-group {
+    @apply mb-8 last:mb-0;
+  }
+
+  .form-label {
+    @apply block text-gray-800 font-medium text-lg mb-3 tracking-wide;
+  }
+
+  .form-control {
+    @apply w-full px-4 py-3 border border-gray-300 rounded-xl
+           text-lg text-gray-900 placeholder-gray-500
+           focus:ring-2 focus:ring-blue-500 focus:border-blue-500
+           focus:outline-none transition-all duration-200;
+  }
+
+  .form-control:focus {
+    @apply shadow-sm;
+  }
+
+  .btn-primary {
+    @apply w-full bg-blue-600 hover:bg-blue-700 text-white
+           font-semibold py-4 px-8 rounded-xl text-lg
+           focus:ring-4 focus:ring-blue-200 focus:outline-none
+           transition-all duration-200 shadow-md hover:shadow-lg;
+  }
+
+  .form-grid {
+    @apply grid grid-cols-1 lg:grid-cols-2 gap-8;
+  }
+
+  .tabs-container {
+  @apply flex flex-wrap justify-center items-center gap-6 mb-12 px-6 max-w-5xl mx-auto;
+}
+
+.tab-item {
+  @apply flex items-center gap-4 min-w-70 bg-gray-100 hover:bg-white
+         border-2 border-gray-200 hover:border-blue-400
+         p-6 rounded-xl shadow-sm hover:shadow-lg
+         transition-all duration-300 cursor-pointer;
+}
+
+.tab-item .border {
+  @apply shrink-0 w-8 h-8 rounded-full  border-gray-400
+         hover:border-blue-500 bg-white shadow-md transition-all;
+}
+
+.tab-item h3 {
+  @apply text-lg font-semibold text-gray-900 m-0 flex-1;
+}
+}
+
+
