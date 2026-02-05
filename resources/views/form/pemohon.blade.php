@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+{{-- <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Form Pengantar Nikah</title>
+    <title>Form Pemohon</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="bg-gray-50 min-h-screen pt-9 ">
@@ -33,12 +33,11 @@
             </div>
             <h3>Identitas Ibu</h3>
         </div>
-    </div>
+    </div> --}}
     {{-- Form Identitas Pemohon --}}
     {{-- form pemohon --}}
-<form action="/submit-form" method="POST" class=" mx-auto">
-    @csrf
-
+{{-- <form action="{{ route('form.pemohon.post') }}" method="POST" class=" mx-auto">
+    @csrf --}}
     {{-- Form Identitas Pemohon --}}
     <div class="form-grid">
          <div class="form-group">
@@ -48,7 +47,7 @@
         </div>
 
             <div class="form-group">
-                        <label for="NIKpemohon" class="form-label">Nomor NIK</label>
+                        <label for="NIKpemohon" class="form-label">NIK</label>
                         <input type="text" id="NIKpemohon" name="NIKpemohon" maxlength="16"
                         class="form-control" placeholder="16 digit NIK" required>
             </div>
@@ -57,17 +56,23 @@
                 <label class="form-label">Jenis Kelamin</label>
                 <x-dropdown name="gender" id="gender" class="form-control">
                             <option value="">Pilih jenis kelamin</option>
-                            <option value="pria">Pria</option>
-                            <option value="wanita">Wanita</option>
+                            <option value="L">Pria</option>
+                            <option value="P">Wanita</option>
                         </x-dropdown>
                     </div>
 
                     <div class="form-group lg:col-span-2">
-                        <label for="TTLpemohon" class="form-label">Tempat, Tanggal Lahir</label>
-                        <input type="text" id="TTLpemohon" name="TTLpemohon"
+                        <label for="Tempatpemohon" class="form-label">Tempat Lahir</label>
+                        <input type="text" id="Tempatpemohon" name="Tempatpemohon"
                         class="form-control" placeholder="Contoh: Jakarta, 15 Mei 1990" required>
                     </div>
+                    <div class="form-group lg:col-span-1">
+                        <label for="Tanggalpemohon" class="form-label">Tanggal Lahir</label>
+                        <input type="date" id="Tanggalpemohon" name="Tanggalpemohon"
+                        class="form-control" required>
+                    </div>
                 </div>
+
 
                 <!-- Section 2: Data Pribadi -->
                 <div class="form-section">
@@ -136,16 +141,13 @@
                 </div>
 
                 <!-- Submit -->
-                <div class="pt-12">
-                    <button type="submit" class="btn-primary">
+                {{-- <div class="pt-12">
+                    <button type="route" class="btn-primary">
                         Next
                     </button>
-                </div>
-            </form>
-
-
-
-
+                </div> --}}
+            {{-- </form> --}}
+{{-- </div>
 </div>
 </body>
-</html>
+</html> --}}

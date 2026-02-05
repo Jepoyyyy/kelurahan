@@ -7,7 +7,7 @@ class LetterController extends Controller
 {
     public function generatePdf()
     {
-        $pdf = PDF::loadView('pdf');
+        $pdf = PDF::loadView('pdf.N1');
         return $pdf->stream('file.pdf');
     }
 }

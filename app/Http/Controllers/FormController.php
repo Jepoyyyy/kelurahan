@@ -15,7 +15,8 @@ class FormController extends Controller
         'namapemohon' => 'required|string|max:255',
         'NIKpemohon' => 'required|digits:16',
         'gender' => 'required',
-        'TTLpemohon' => 'required',
+        'Tempatpemohon' => 'required',
+        'Tanggalpemohon' => 'required',
         'WNpemohon' => 'required',
         'Agamapemohon' => 'required',
         'Pekerjaanpemohon' => 'required',
@@ -32,11 +33,57 @@ class FormController extends Controller
 
     public function ayahstep()
     {
+        if(!session()->has ('form.pemohon'))
+            return redirect('form/pemohon');
         $data= session('form.ayah', []);
         return view('form.ayah', compact('data'));
     }
     public function postayahstep (request $request){
+         $validated = $request->validate([
+        'namaayah' => 'required|string|max:255',
+        'NIKayah' => 'required|digits:16',
+        'TanggalLayah' => 'required',
+        'TempatLayah' => 'required',
+        'WNayah' => 'required',
+        'Agamaayah' => 'required',
+        'Pekerjaanayah' => 'required',
+        'Alamatayah' => 'required',
+        'Rtayah' => 'required',
+        ]);
+     session(['form.ayah' => $validated]);
+
+    return redirect('/form/ibu');
+    }
+    public function ibustep()
+    {
+        if(!session()->has ('form.pemohon'))
+            return redirect('form/pemohon');
+        if(!session()->has ('form.ayah'))
+            return redirect('form/ayah');
+        $data= session('form.ibu', []);
+        return view('form.ibu', compact('data'));
+    }
+    public function postibustep (request $request){
+         $validated = $request->validate([
+        'namaibu' => 'required|string|max:255',
+        'NIKibu' => 'required|digits:16',
+        'TanggalLibu' => 'required',
+        'TempatLibu' => 'required',
+        'WNibu' => 'required',
+        'Agamaibu' => 'required',
+        'Pekerjaanibu' => 'required',
+        'Alamatibu' => 'required',
+        'Rtibu' => 'required',
+        ]);
+     session(['form.ibu' => $validated]);
+
+    return redirect('/form/overview');
+    }
+    public function overviewstep()
+    {
 
     }
-}
+    public function postoverviewstep (request $request){
 
+}
+}
