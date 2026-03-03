@@ -1,38 +1,39 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\FormController;
 use App\Http\Controllers\FormControllerexm;
-use Livewire\Form;
+use App\Http\Controllers\ContentManController;
 
-Route::get('/', function () {
-    return view('Dashboard');
-});
-// Route::controller(FormController::class)->group(function () {
 
-//     Route::get('/form/pemohon', 'pemohonstep')->name('form.pemohon');
-//     Route::post('/form/pemohon', 'postpemohonstep')->name('form.pemohon.post');
-
-//     Route::get('/form/ayah', 'ayahstep')->name('form.ayah');
-//     Route::post('/form/ayah', 'postayahstep')->name('form.ayah.post');
-
-//     Route::get('/form/ibu', 'ibustep')->name('form.ibu');
-//     Route::post('/form/ibu', 'postibustep')->name('form.ibu.post');
-
-//     Route::get('/form/overview', 'overviewstep')->name('form.overview');
-//     Route::post('/form/overview', 'postoverviewstep')->name('form.overview.post');
-// });
-Route::get('/form/{step}', [FormControllerexm::class, 'show'])->name('form.step');;
-Route::post('/form/{step}', [FormControllerexm::class, 'store'])->name('form.step.post');;
-Route::post('/form/submit', [FormControllerexm::class, 'finalSubmit'])
+// ✅ Route spesifik HARUS di atas route dinamis
+Route::post('/form/final-submit', [FormControllerexm::class, 'finalSubmit'])
     ->name('form.final.submit');
 
+Route::get('/form/success', function () {
+    return view('wizardform', ['step' => 'success']);
+})->name('form.success');
 
-Route::get('/generate-pdf', [App\Http\Controllers\LetterController::class, 'generatePdf']);
+
+// Route dinamis di bawah
+Route::get('/form/{step}', [FormControllerexm::class, 'show'])
+    ->name('form.step');
+Route::post('/form/{step}', [FormControllerexm::class, 'store'])
+    ->name('form.step.post')->where('step', 'pemohon|ayah|ibu');;
 
 Route::get('/reset-form', function () {
     session()->forget('form');
-    return 'Form session cleared';
+    return redirect('/form/pemohon')->with('success', 'Form session cleared');
 });
 
+Route::get('/dashboard', function () {
+    return view('components-content.dashboard');
+})->name('dashboard');
+Route::get('/content-man', [ContentManController::class, 'index'])
+    ->name('content-man');
+Route::post('/content-man/news', [ContentManController::class, 'newsstore'])
+    ->name('content-man.news.store');
+Route::get('/', function () {
+    return view('landing');
+})->name('landing');
 
+Route::get('/generate-pdf', [App\Http\Controllers\LetterController::class, 'generatePdf']);

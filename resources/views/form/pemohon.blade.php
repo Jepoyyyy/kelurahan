@@ -119,7 +119,7 @@
 
                 <div class="form-group">
                     <label class="form-label">Status Perkawinan Saat Ini</label>
-                    <x-dropdown name="letter_type" id="letter_type" class="form-control">
+                    <x-dropdown name="status" id="status" class="form-control">
                         <option value="">-- Pilih Jenis Kelamin Terlebih Dahulu --</option>
                     </x-dropdown>
                 </div>

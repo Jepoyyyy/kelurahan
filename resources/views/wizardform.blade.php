@@ -17,18 +17,38 @@
 
     {{-- STEP INDICATOR --}}
 
+<div style="background: yellow; padding:10px">
+    STEP SEKARANG: {{ $step }}
+</div>
 
     {{-- DINAMIC STEP CONTENT --}}
     <div>
-    <form method="POST" action="{{ url('/form/'.$step) }}">
-        @csrf
+    @if($step === 'overview')
+            {{-- Form khusus untuk overview --}}
+            <form method="POST" action="{{ route('form.final.submit') }}">
+                @csrf
+                @include("form.overview")
 
-        @include("form.$step")
+                <div class="pt-12">
+                    <button type="submit" class="btn-primary">
+                        Simpan Semua Data
+                    </button>
+                </div>
+            </form>
+        @elseif($step === 'success')
+            {{-- Tanpa form untuk success --}}
+            @include("form.success")
+        @else
+            {{-- Form untuk step biasa (pemohon/ayah/ibu) --}}
+            <form method="POST" action="{{ url('/form/'.$step) }}">
+                @csrf
+                @include("form.$step")
 
-        <div class="pt-12">
-            <button type="submit" class="btn-primary">Next</button>
-        </div>
-    </form>
+                <div class="pt-12">
+                    <button type="submit" class="btn-primary">Next</button>
+                </div>
+            </form>
+        @endif
 </div>
 
 </div>

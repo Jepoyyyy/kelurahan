@@ -69,7 +69,28 @@
 .tab-item h3 {
   @apply text-lg font-semibold text-gray-900 m-0 flex-1;
 }
+.sidebar-items-container ul li:hover{
+    @apply  border-1 rounded-lg border-zinc-600 bg-zinc-600 ;
+}
+.sidebar-items{
+    @apply p-6 ;
+}
+.sidebar-items-container ul li{
+    @apply select-none cursor-pointer  p-2;
+    -webkit-user-drag: none;
 
 }
+.sidebar-items-container{
+    @apply w-full ;
+}
+.sidebar-content{
+    @apply flex flex-col text-white ;
+}
+.dashboard-sidebar-wrapper{
+    @apply min-w-1/5  min-h-screen  ;
+}
+
+}
+
 
 

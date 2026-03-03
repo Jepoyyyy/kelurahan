@@ -1,9 +1,9 @@
 <div class="wrapper container">
     <div class="pemohonwrapper">
-        <div class="overview-group p-4 border rounded-lg bg-white shadow-md" OnClick="OpenModals()">
+        <div class="overview-group p-4 border rounded-lg bg-white shadow-md">
             <h3>Data Pemohon</h3>
 
-            {{-- <div class="overview-data">
+            <div class="overview-data">
                 <label for="namapemohonov" class="overview-label">Nama:</label>
                 <span id="namapemohonovdata" name="namapemohonovdata"class="overview-input" value="{{ $pemohon['namapemohon'] }}">
                     {{ $pemohon['namapemohon'] }}
@@ -59,8 +59,8 @@
             </div>
             <div class="overview-data">
                 <label for="letter_typepemohonov" class="overview-label">Jenis Surat:</label>
-                <span id="letter_typepemohonovdata" name="letter_typepemohonovdata"class="overview-input" value="{{ $pemohon['letter_type'] }}">
-                    {{ $pemohon['letter_type'] }}
+                <span id="letter_typepemohonovdata" name="letter_typepemohonovdata"class="overview-input" value="{{ $pemohon['status'] }}">
+                    {{ $pemohon['status'] }}
                 </span>
             </div>
             <div class="overview-data">
@@ -75,24 +75,19 @@
                     {{ $pemohon['namapemohon'] }}
                 </span>
             </div>
-        </div> --}}
+        </div>
     </div>
 
 <div class="overview-group p-4 border rounded-lg bg-white shadow-md my-4">
     <h3>Data Ayah</h3>
-    {{-- Nama: {{ $ayah['namaayah'] }} <br>
-    NIK: {{ $ayah['NIKayah'] }} --}}
+    Nama: {{ $ayah['namaayah'] }} <br>
+    NIK: {{ $ayah['NIKayah'] }}
 </div>
 
 <div class="overview-group p-4 border rounded-lg bg-white shadow-md">
     <h3>Data Ibu</h3>
-    {{-- Nama: {{ $ibu['namaibu'] }} <br>
-    NIK: {{ $ibu['NIKibu'] }} --}}
+    Nama: {{ $ibu['namaibu'] }} <br>
+    NIK: {{ $ibu['NIKibu'] }}
 </div>
-
-{{-- <form method="POST" action="{{ route('form.final.submit') }}">
-    @csrf
-    <button type="submit">Simpan Semua Data</button>
-</form> --}}
 </div>
 
