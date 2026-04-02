@@ -4,6 +4,11 @@
             <input type="text" id="namaayah" name="namaayah"
                                class="form-control" placeholder="Nama lengkap sesuai KTP" required>
         </div>
+         <div class="form-group">
+            <label for="namaayahayah" class="form-label">Bin</label>
+            <input type="text" id="namaayahayah" name="namaayahayah"
+                               class="form-control" placeholder="Nama lengkap sesuai KTP" required>
+        </div>
 
             <div class="form-group">
                         <label for="NIKayah" class="form-label">NIK</label>
@@ -51,10 +56,6 @@
                             <label for="Alamatayah" class="form-label">Alamat Lengkap</label>
                         <input type="text" id="Alamatayah" name="Alamatayah"
                         class="form-control" placeholder="Alamat sesuai KTP" required>
-                        <div>
-                            <label for="RTayah" class="form-label">RT</label>
-                            <input type="text" name="RTayah" class="form-control" required>
-                        </div>
                         <div>
 
                         </div>

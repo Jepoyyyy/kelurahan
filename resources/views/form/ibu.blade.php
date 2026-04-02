@@ -4,6 +4,11 @@
             <input type="text" id="namaibu" name="namaibu"
                                class="form-control" placeholder="Nama lengkap sesuai KTP" required>
         </div>
+         <div class="form-group">
+            <label for="namaayahibu" class="form-label">Bin</label>
+            <input type="text" id="namaayahibu" name="namaayahibu"
+                               class="form-control" placeholder="Nama Ayah" required>
+        </div>
         <div class="form-group">
             <label for="NIKibu" class="form-label">NIK</label>
             <input type="text" id="NIKibu" name="NIKibu" maxlength="16"
@@ -50,10 +55,6 @@
                             <label for="Alamatibu" class="form-label">Alamat Lengkap</label>
                         <input type="text" id="Alamatibu" name="Alamatibu"
                         class="form-control" placeholder="Alamat sesuai KTP" required>
-                        <div>
-                            <label for="RTibu" class="form-label">RT</label>
-                            <input type="text" name="RTibu" class="form-control" required>
-                        </div>
                         <div>
 
                         </div>

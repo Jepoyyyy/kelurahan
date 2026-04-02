@@ -11,7 +11,8 @@ class FormControllerexm extends Controller
         'pemohon',
         'ayah',
         'ibu',
-        'overview',
+        'pasangan',
+        'overview', 
         'success'
     ];
 
@@ -31,7 +32,8 @@ class FormControllerexm extends Controller
             // Cek apakah semua data sudah ada
             if (!session()->has('form.pemohon') ||
                 !session()->has('form.ayah') ||
-                !session()->has('form.ibu')) {
+                !session()->has('form.ibu') ||
+                !session()->has('form.pasangan')) {
                 return redirect('/form/pemohon')
                     ->with('error', 'Mohon lengkapi semua data terlebih dahulu');
             }
@@ -41,6 +43,7 @@ class FormControllerexm extends Controller
                 'pemohon' => session('form.pemohon'),
                 'ayah'    => session('form.ayah'),
                 'ibu'     => session('form.ibu'),
+                'pasangan' => session('form.pasangan'),
             ]);
         }
 
@@ -60,11 +63,7 @@ class FormControllerexm extends Controller
 
     public function store(Request $request, string $step)
     {
-        // Pastikan step valid dan bukan overview/success
-    //     if ($step === 'overview') {
-    //     return redirect('/form-final-submit');
-    // }
-        if (!in_array($step, ['pemohon', 'ayah', 'ibu'])) {
+        if (!in_array($step, ['pemohon', 'ayah', 'ibu', 'pasangan'])) {
             abort(404);
         }
 
@@ -72,6 +71,7 @@ class FormControllerexm extends Controller
             'pemohon' => $this->validatePemohon($request),
             'ayah'    => $this->validateAyah($request),
             'ibu'     => $this->validateIbu($request),
+            'pasangan' => $this->validatePasangan($request),
             default   => abort(404)
         };
 
@@ -103,6 +103,7 @@ class FormControllerexm extends Controller
     {
         return $request->validate([
             'namaayah' => 'required|string|max:255',
+            'namaayahayah' => 'required|string|max:255',
             'NIKayah'  => 'required|digits:16',
             'TempatLayah' => 'required',
             'TanggalLayah'=> 'required',
@@ -110,7 +111,7 @@ class FormControllerexm extends Controller
             'Agamaayah' => 'required',
             'Pekerjaanayah' => 'required',
             'Alamatayah' => 'required',
-            'RTayah' => 'required',
+
         ]);
     }
 
@@ -118,6 +119,7 @@ class FormControllerexm extends Controller
     {
         return $request->validate([
             'namaibu' => 'required|string|max:255',
+            'namaayahibu' => 'required|string|max:255',
             'NIKibu'  => 'required|digits:16',
             'TempatLibu' => 'required',
             'TanggalLibu'=> 'required',
@@ -125,7 +127,22 @@ class FormControllerexm extends Controller
             'Agamaibu' => 'required',
             'Pekerjaanibu' => 'required',
             'Alamatibu' => 'required',
-            'RTibu' => 'required',
+
+        ]);
+    }
+
+    protected function validatePasangan(Request $request): array
+    {
+        return $request->validate([
+            'namapasangan' => 'required|string|max:255',
+            'namaayahpasangan' => 'required|string|max:255',
+            'NIKpasangan'  => 'required|digits:16',
+            'TempatLpasangan' => 'required',
+            'TanggalLpasangan'=> 'required',
+            'WNpasangan' => 'required',
+            'Agamapasangan' => 'required',
+            'Pekerjaanpasangan' => 'required',
+            'Alamatpasangan' => 'required',
         ]);
     }
 
@@ -161,9 +178,10 @@ class FormControllerexm extends Controller
         $pemohon = session('form.pemohon');
         $ayah = session('form.ayah');
         $ibu = session('form.ibu');
+        $pasangan = session('form.pasangan');
 
         // Validasi data lengkap
-        if (!$pemohon || !$ayah || !$ibu) {
+        if (!$pemohon || !$ayah || !$ibu || !$pasangan) {
             return redirect('/form/pemohon')
                 ->with('error', 'Data belum lengkap');
         }
@@ -192,6 +210,7 @@ class FormControllerexm extends Controller
             // Store ayah
             DB::table('ayahs')->insert([
                 'nama' => $ayah['namaayah'],
+                'namaayah' => $ayah['namaayahayah'],
                 'nik' => $ayah['NIKayah'],
                 'tempat_lahir' => $ayah['TempatLayah'],
                 'tanggal_lahir' => $ayah['TanggalLayah'],
@@ -199,7 +218,6 @@ class FormControllerexm extends Controller
                 'agama' => $ayah['Agamaayah'],
                 'pekerjaan' => $ayah['Pekerjaanayah'],
                 'alamat' => $ayah['Alamatayah'],
-                'rt' => $ayah['RTayah'],
                 'pemohon_id' => $pemohonId,
                 'created_at' => now(),
                 'updated_at' => now(),
@@ -208,6 +226,7 @@ class FormControllerexm extends Controller
             // Store ibu
             DB::table('ibus')->insert([
                 'nama' => $ibu['namaibu'],
+                'namaayah' => $ibu['namaayahibu'],
                 'nik' => $ibu['NIKibu'],
                 'tempat_lahir' => $ibu['TempatLibu'],
                 'tanggal_lahir' => $ibu['TanggalLibu'],
@@ -215,7 +234,20 @@ class FormControllerexm extends Controller
                 'agama' => $ibu['Agamaibu'],
                 'pekerjaan' => $ibu['Pekerjaanibu'],
                 'alamat' => $ibu['Alamatibu'],
-                'rt' => $ibu['RTibu'],
+                'pemohon_id' => $pemohonId,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
+            DB::table('pasangans')->insert([
+                'nama' => $pasangan['namapasangan'],
+                'namaayah' => $pasangan['namaayahpasangan'],
+                'nik' => $pasangan['NIKpasangan'],
+                'tempat_lahir' => $pasangan['TempatLpasangan'],
+                'tanggal_lahir' => $pasangan['TanggalLpasangan'],
+                'kewarganegaraan' => $ibu['WNibu'],
+                'agama' => $ibu['Agamaibu'],
+                'pekerjaan' => $ibu['Pekerjaanibu'],
+                'alamat' => $ibu['Alamatibu'],
                 'pemohon_id' => $pemohonId,
                 'created_at' => now(),
                 'updated_at' => now(),
@@ -226,12 +258,6 @@ class FormControllerexm extends Controller
            session()->forget('form');
 
             return redirect()->route('form.success');
-        // } catch (\Exception $e) {
-        //     DB::rollBack();
-
-        //     return redirect('/form/overview')
-        //         ->with('error', 'Gagal menyimpan data: ' . $e->getMessage());
-        // }
         }catch (\Exception $e) {
     DB::rollBack();
 

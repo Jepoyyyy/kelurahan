@@ -16,11 +16,10 @@ return new class extends Migration
 
             $table->string('nama');
             $table->string('nik', 16)->unique();
-            $table->enum('gender', ['L', 'P']);
+            $table->enum('gender', ['Laki-laki', 'Perempuan']);
 
             $table->string('tempat_lahir');
             $table->date('tanggal_lahir');
-
             $table->string('kewarganegaraan');
             $table->string('agama');
             $table->string('pekerjaan');

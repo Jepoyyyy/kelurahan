@@ -33,5 +33,9 @@ class Pemohon extends Model
     {
         return $this->hasOne(Ibu::class);
     }
+    public function pasangan()
+    {
+        return $this->hasOne(Pasangan::class);
+    }
 
 }

@@ -89,5 +89,10 @@
     Nama: {{ $ibu['namaibu'] }} <br>
     NIK: {{ $ibu['NIKibu'] }}
 </div>
+<div class="overview-group p-4 border rounded-lg bg-white shadow-md">
+    <h3>Data Pasangan</h3>
+    Nama: {{ $pasangan['namapasangan'] }} <br>
+    NIK: {{ $pasangan['NIKpasangan'] }}
+</div>
 </div>
 

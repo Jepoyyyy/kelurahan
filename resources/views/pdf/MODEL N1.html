@@ -90,7 +90,8 @@
                 <td>:</td>
                 <td>{{ $pemohon->pekerjaan }}</td>
             </tr>
-            <tr style="vertical-align: top;">
+            <tr style="vertical-align: top;
+    ">
                 <td></td>
                 <td>8.</td>
                 <td>Alamat</td>
@@ -100,7 +101,7 @@
             <tr>
                 <td></td>
                 <td>9.</td>
-                <td>Status perkawinan</td>
+                <td>Status perkawinan  </td>
 
             </tr>
             <tr>
@@ -108,28 +109,28 @@
                 <td></td>
                 <td>a.&nbsp;&nbsp;Laki-laki : Jejaka, Duda</td>
                 <td>:</td>
-                <td>{{ $pemohon->status }}</td>
+                <td>{{ $pemohon.marital }}</td>
             </tr>
             <tr>
                 <td></td>
                 <td></td>
                 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;atau Beristri ke... </td>
                 <td>:</td>
-                <td>{{ $pemohon->beristri_ke }}</td>
+                <td>{{ $pemohon.spouse_count }}</td>
             </tr>
             <tr>
                 <td></td>
                 <td></td>
                 <td>b.&nbsp;&nbsp;Perempuan : Perawan, Janda</td>
                 <td>:</td>
-                <td>{{ $pemohon->status}}</td>
+                <td>{{ $pemohon.spouse_count }}</td>
             </tr>
             <tr>
                 <td></td>
                 <td>10.</td>
                 <td>Nama istri/suami terdahulu </td>
                 <td>:</td>
-                <td>{{ $pemohon->nama_partner_sebelumnya }}</td>
+                <td>{{ $pemohon.spouse_count }}</td>
             </tr>
 
         </table>
@@ -142,49 +143,49 @@
                     <td>1.</td>
                     <td style="width: 253px;">Nama Lengkap dan alias </td>
                     <td>:</td>
-                    <td>{{ $ayah->nama }}</td>
+                    <td>{{ $ayah.name }}</td>
                 </tr>
                 <tr>
                     <td></td>
                     <td>2.</td>
                     <td>Nomor Induk Kependudukan (NIK)</td>
                     <td>:</td>
-                    <td>{{ $ayah->nik }}</td>
+                    <td>{{ $ayah.name }}</td>
                 </tr>
                 <tr>
                     <td></td>
                     <td>3.</td>
                     <td>Tempat dan tanggal lahir</td>
                     <td>:</td>
-                    <td>{{ $ayah->tempat_lahir }}, {{ $ayah->tanggal_lahir }}</td>
+                    <td>{{ $ayah.name }}</td>
                 </tr>
                 <tr>
                     <td></td>
                     <td>4.</td>
                     <td>Kewarganegaraan</td>
                     <td>:</td>
-                    <td>{{ $ayah->kewarganegaraan }}</td>
+                    <td>{{ $ayah.name }}</td>
                 </tr>
                 <tr>
                     <td></td>
                     <td>5.</td>
                     <td>Agama</td>
                     <td>:</td>
-                    <td>{{ $ayah->agama }}</td>
+                    <td>{{ $ayah.name }}</td>
                 </tr>
                 <tr>
                     <td></td>
-                    <td>6.</td>
+                    <td>1.</td>
                     <td>Pekerjaan</td>
                     <td>:</td>
-                    <td>{{ $ayah->pekerjaan }}</td>
+                    <td>{{ $ayah.name }}</td>
                 </tr>
                 <tr>
                     <td></td>
                     <td>7.</td>
                     <td>Alamat</td>
                     <td>:</td>
-                    <td>{{ $ayah->alamat }}</td>
+                    <td>{{ $ayah.name }}</td>
                 </tr>
             </table>
         </div>
@@ -196,49 +197,49 @@
                     <td>1.</td>
                     <td style="width: 249px;">Nama Lengkap dan alias </td>
                     <td>:</td>
-                    <td>{{ $ibu->nama }}</td>
+                    <td>{{ $ibu.name }}</td>
                 </tr>
                 <tr>
                     <td></td>
                     <td>2.</td>
                     <td>Nomor Induk Kependudukan (NIK)</td>
                     <td>:</td>
-                    <td>{{ $ibu->nik }}</td>
+                    <td>{{ $ibu.name }}</td>
                 </tr>
                 <tr>
                     <td></td>
                     <td>3.</td>
                     <td>Tempat dan tanggal lahir</td>
                     <td>:</td>
-                    <td>{{ $ibu->tempat_lahir }}, {{ $ibu->tanggal_lahir }}</td>
+                    <td>{{ $ibu.name }}</td>
                 </tr>
                 <tr>
                     <td></td>
                     <td>4.</td>
                     <td>Kewarganegaraan</td>
                     <td>:</td>
-                    <td>{{ $ibu->kewarganegaraan }}</td>
+                    <td>{{ $ibu.name }}</td>
                 </tr>
                 <tr>
                     <td></td>
                     <td>5.</td>
                     <td>Agama</td>
                     <td>:</td>
-                    <td>{{ $ibu->agama }}</td>
+                    <td>{{ $ibu.name }}</td>
                 </tr>
                 <tr>
                     <td></td>
-                    <td>6.</td>
+                    <td>1.</td>
                     <td>Pekerjaan</td>
                     <td>:</td>
-                    <td>{{ $ibu->pekerjaan }}</td>
+                    <td>{{ $ibu.name }}</td>
                 </tr>
                 <tr>
                     <td></td>
                     <td>7.</td>
                     <td>Alamat</td>
                     <td>:</td>
-                    <td>{{ $ibu->alamat }}</td>
+                    <td>{{ $ibu.name }}</td>
                 </tr>
             </table>
         </div>
@@ -246,21 +247,21 @@
         <div class="ttd-con" style="justify-content: end;display: flex; flex-direction: column; align-items: end;">
             <div class="ttd-header" style="margin:10px 30px 40px 0; text-align: center;">
                 <div>
-                    Jambi,{{ $todaydate }}
+                    Jambi,{{ todaydate }}
                 </div>
                 <div>
-                    LURAH SIMPANG III SIPIN
+                    {{ $lurah.jabatan }}
                 </div>
             </div>
             <div class="ttd-footer" style="margin:40px 30px 10px 0;text-align: center;">
                 <div>
-                    {{ $lurah->name }}
+                    {{ $lurah.name }}
                 </div>
                 <div>
-                    {{ $lurah->pangkat }}
+                    {{ $lurah.pangkat }}
                 </div>
                 <div>
-                    NIP.{{ $lurah->NIP }}
+                    NIP.{{ $lurah.NIP }}
                 </div>
             </div>
         </div>

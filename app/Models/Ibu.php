@@ -11,6 +11,7 @@ class Ibu extends Model
 
     protected $fillable = [
         'nama',
+        'namaayah',
         'nik',
         'tempat_lahir',
         'kewarganegaraan',

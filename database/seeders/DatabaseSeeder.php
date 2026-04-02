@@ -5,6 +5,10 @@ namespace Database\Seeders;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Pemohon;
+use App\Models\Ayah;
+use App\Models\Ibu;
+use App\Models\Pasangan;
 
 class DatabaseSeeder extends Seeder
 {
@@ -15,11 +19,21 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        Pemohon::factory(100)->create()->each(function ($pemohon) {
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+        Ayah::factory()->create([
+            'pemohon_id' => $pemohon->id
         ]);
+
+        Ibu::factory()->create([
+            'pemohon_id' => $pemohon->id
+        ]);
+
+        Pasangan::factory()->create([
+            'pemohon_id' => $pemohon->id
+        ]);
+
+    });
+
     }
 }

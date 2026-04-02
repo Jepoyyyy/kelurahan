@@ -2,26 +2,25 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-
-class Ayah extends Model
+class Pasangan extends Model
 {
     use HasFactory;
-
     protected $fillable = [
         'nama',
         'namaayah',
         'nik',
         'tempat_lahir',
+        'tanggal_lahir',
         'kewarganegaraan',
         'agama',
         'pekerjaan',
         'alamat',
-        'rt',
-        'pemohon_id'
+        'pemohon_id',
     ];
+
     public function pemohon()
     {
         return $this->belongsTo(Pemohon::class);

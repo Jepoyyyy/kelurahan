@@ -11,12 +11,12 @@ document.addEventListener("DOMContentLoaded", function () {
     if (genderSelect && letterTypeSelect) {
 
         const optionsMap = {
-            L: [
+            'Laki-laki': [
                 { value: 'Jejaka', text: 'Jejaka' },
                 { value: 'Duda', text: 'Duda' },
                 { value: 'Beristri', text: 'Beristri' }
             ],
-            P: [
+            'Perempuan': [
                 { value: 'Janda', text: 'Janda' },
                 { value: 'Perawan', text: 'Perawan' }
             ]
