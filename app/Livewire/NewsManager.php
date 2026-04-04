@@ -15,11 +15,15 @@ class NewsManager extends Component
     use WithFileUploads;
 
     //pagination dan sorting
-    public $perPage = 10;
+    public $perPage = 5;
     public $sortField = 'title';
     public $sortDirection = 'asc';
 
-
+    public function toggleShowAll()
+{
+    $this->perPage = $this->perPage === 10 ? 5 : 10;
+    // sama, tidak perlu resetPage()
+}
 
     public function sortBy($field)
 {

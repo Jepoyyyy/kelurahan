@@ -1,20 +1,21 @@
 <div>
     <div class="flex justify-between items-center mb-3">
-        <h1 class="text-2xl font-bold">Berita</h1>
-        <div class="button-group">
-            <button wire:click="openCreateModal" class="border-black px-3 py-1 rounded">
+        <h1 class="text-lg font-bold">Berita</h1>
+        <div class="button-group flex justify-center items-center">
+            <button wire:click="openCreateModal" class="border-black px-3 py-1 rounded hover:bg-gray-200">
                 <x-heroicon-o-plus class="w-5 h-5"/>
             </button>
-            <button>
-                
+            <button wire:click="toggleShowAll"
+                class=" px-3 py-1 rounded {{ $perPage === 10 ? 'bg-blue-600 text-white' : 'bg-white text-gray-600' }}">
+                {{ $perPage === 10 ? 'Lihat Sedikit' : 'Lihat Semua' }}
             </button>
         </div>
     </div>
 
         <table class="w-full border-collapse text-center">
         <thead>
-            <tr class="bg-gray-200">
-                <th wire:click="sortBy('title')" class="cursor-pointer p-3 text-sm font-semibold">
+            <tr class="bg-gray-200 ">
+                <th wire:click="sortBy('title')" class="cursor-pointer p-3  text-sm font-semibold">
                 Judul
                 @if($sortField === 'title')
                     @if($sortDirection === 'asc')
@@ -53,7 +54,7 @@
 
         <tr class="hover:bg-gray-50">
 
-    <td class="p-3">
+    <td class="p-3 ">
         {{ $item->title }}
     </td>
     <td class="p-3">
@@ -71,9 +72,6 @@
     <button wire:click="delete({{ $item->id }})" class="border-black px-3 py-1 rounded">
         <x-heroicon-o-trash class="w-5 h-5"/>
     </button>
-    <button class="border-black px-3 py-1 rounded">
-        <x-heroicon-o-printer class="w-5 h-5"/>
-    </button>
 </td>
 
 </tr>
@@ -82,6 +80,11 @@
 
 </tbody>
     </table>
+    @if ($perPage === 10)
+    <div>
+        {{ $newsList->links() }}
+    </div>
+    @endif
     @if($showCreateModal)
     <div class="fixed inset-0 backdrop-blur-sm flex items-center justify-center z-50">
         <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-lg">
@@ -94,12 +97,12 @@
                     <div class="flex flex-col gap-2">
                         <label class="font-bold">Judul</label>
                         <input wire:model="title" type="text" class="border p-2 rounded">
-                        @error('title') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+                        @error('title') <span class="text-red-500 ">{{ $message }}</span> @enderror
                     </div>
                     <div class="flex flex-col gap-2">
                         <label class="font-bold">Gambar</label>
                         <input wire:model="picture" type="file" accept="image/*" class="border p-2 rounded">
-                        @error('picture') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+                        @error('picture') <span class="text-red-500 ">{{ $message }}</span> @enderror
                         @if($picture)
                             <img src="{{ $picture->temporaryUrl() }}" class="h-32 object-cover rounded mt-2">
                         @endif
@@ -107,7 +110,7 @@
                     <div class="flex flex-col gap-2">
                         <label class="font-bold">Deskripsi</label>
                         <textarea wire:model="description" rows="4" class="border p-2 rounded resize-none"></textarea>
-                        @error('description') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+                        @error('description') <span class="text-red-500 ">{{ $message }}</span> @enderror
                     </div>
                     <button type="submit" class="bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700">Submit</button>
                 </div>
@@ -129,12 +132,12 @@
                     <div class="flex flex-col gap-2">
                         <label class="font-bold">Judul</label>
                         <input wire:model="title" type="text" class="border p-2 rounded">
-                        @error('title') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+                        @error('title') <span class="text-red-500 ">{{ $message }}</span> @enderror
                     </div>
                     <div class="flex flex-col gap-2">
                         <label class="font-bold">Gambar</label>
                         <input wire:model="picture" type="file" accept="image/*" class="border p-2 rounded">
-                        @error('picture') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+                        @error('picture') <span class="text-red-500 ">{{ $message }}</span> @enderror
                         {{-- Preview gambar lama --}}
                         @if(!$picture && $selectedId)
                             <img src="{{ asset('storage/' . App\Models\News::find($selectedId)?->picture) }}"
@@ -148,7 +151,7 @@
                     <div class="flex flex-col gap-2">
                         <label class="font-bold">Deskripsi</label>
                         <textarea wire:model="description" rows="4" class="border p-2 rounded resize-none"></textarea>
-                        @error('description') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+                        @error('description') <span class="text-red-500 ">{{ $message }}</span> @enderror
                     </div>
                     <button type="submit" class="bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700">Update</button>
                 </div>
