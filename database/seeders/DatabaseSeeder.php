@@ -9,6 +9,8 @@ use App\Models\Pemohon;
 use App\Models\Ayah;
 use App\Models\Ibu;
 use App\Models\Pasangan;
+use App\Models\Event;
+use App\Models\news;
 
 class DatabaseSeeder extends Seeder
 {
@@ -33,7 +35,10 @@ class DatabaseSeeder extends Seeder
             'pemohon_id' => $pemohon->id
         ]);
 
-    });
 
+
+    });
+        Event::factory(100)->create();
+        news::factory(100)->create();
     }
 }

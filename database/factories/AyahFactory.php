@@ -26,7 +26,6 @@ class AyahFactory extends Factory
         'agama' => fake()->randomElement(['Islam', 'Kristen', 'Hindu']),
         'pekerjaan' => fake()->jobTitle(),
         'alamat' => fake()->address(),
-        'pemohon_id' => null,
     ];
 }
 }
