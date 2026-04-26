@@ -14,7 +14,9 @@ return new class extends Migration
         Schema::create('innovation_updates', function (Blueprint $table) {
             $table->id();
             $table->foreignId('innovations_id')->constrained('innovations')->cascadeOnDelete();
+            $table->string('slug')->unique();
             $table->string('title');
+            $table->date('activity_date');
             $table->text('description');
             $table->timestamps();
             $table->index('innovations_id');

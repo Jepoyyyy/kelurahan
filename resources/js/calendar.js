@@ -67,9 +67,35 @@ document.addEventListener('DOMContentLoaded', function () {
             right:  'next',
         },
 
-        
+
         dayMaxEvents: 2,
         events:       window.calendarEvents ?? [],
+
+        eventContent: function(arg) {
+            return {
+                html: `
+                    <div style="
+                        width: 8px;
+                        height: 8px;
+                        border-radius: 50%;
+                        background-color: ${arg.event.backgroundColor};
+                        margin: 4px auto;
+                    "></div>
+                `
+            };
+        },
+        eventDidMount: function(arg) {
+    // Cek apakah elemen ini ada di dalam popover
+    if (arg.el.closest('.fc-popover')) {
+        // Ganti konten titik dengan titik + title
+        arg.el.innerHTML = `
+            <div style="display:flex; align-items:center; gap:6px; padding:2px 4px;">
+                <span style="width:8px;height:8px;border-radius:50%;background:${arg.event.backgroundColor};flex-shrink:0;display:inline-block;"></span>
+                <span style="font-size:0.82rem;color:#374151;">${arg.event.title}</span>
+            </div>
+        `;
+    }
+},
 
         // ── Klik tanggal ──────────────────────────────────────────────────────
         dateClick: function (info) {

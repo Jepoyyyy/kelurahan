@@ -9,6 +9,7 @@ use Carbon\Carbon;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Storage;
 
+#[\Livewire\Attributes\Layout('dashboard')]
 class NewsManager extends Component
 {
     use WithPagination;

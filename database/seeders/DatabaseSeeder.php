@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        Pemohon::factory(100)->create()->each(function ($pemohon) {
+        Pemohon::factory(10)->create()->each(function ($pemohon) {
 
         Ayah::factory()->create([
             'pemohon_id' => $pemohon->id
@@ -38,7 +38,7 @@ class DatabaseSeeder extends Seeder
 
 
     });
-        Event::factory(100)->create();
-        news::factory(100)->create();
+        Event::factory(10)->create();
+        news::factory(10)->create();
     }
 }

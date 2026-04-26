@@ -5,10 +5,6 @@
             <button wire:click="openCreateModal" class="border-black px-3 py-1 rounded hover:bg-gray-200">
                 <x-heroicon-o-plus class="w-5 h-5"/>
             </button>
-            <button wire:click="toggleShowAll"
-                class=" px-3 py-1 rounded {{ $perPage === 10 ? 'bg-blue-600 text-white' : 'bg-white text-gray-600' }}">
-                {{ $perPage === 10 ? 'Lihat Sedikit' : 'Lihat Semua' }}
-            </button>
         </div>
     </div>
 
@@ -80,11 +76,13 @@
 
 </tbody>
     </table>
-    @if ($perPage === 10)
+    
     <div>
         {{ $newsList->links() }}
     </div>
-    @endif
+    \
+
+    {{-- Modal Create --}}
     @if($showCreateModal)
     <div class="fixed inset-0 backdrop-blur-sm flex items-center justify-center z-50">
         <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-lg">
@@ -159,5 +157,15 @@
         </div>
     </div>
     @endif
+
+<div class="edit-container">
+            <form action="">
+            <div>
+                <div>
+
+                </div>
+            </div>
+        </form>
+    </div>
 
 </div>

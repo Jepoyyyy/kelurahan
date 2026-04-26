@@ -1,5 +1,6 @@
 import './bootstrap';
 
+
 document.addEventListener("DOMContentLoaded", function () {
 
     const genderSelect = document.getElementById('gender');

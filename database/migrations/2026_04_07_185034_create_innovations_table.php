@@ -17,12 +17,10 @@ return new class extends Migration
             $table->string('slug')->unique();
             $table->text('description');
             $table->enum('status',['draft','on_progress','completed'])->default('draft');
-            $table->boolean('is_featured')->default(false);
             $table->date('start_date')->nullable();
             $table->date('end_date')->nullable();
             $table->timestamps();
-            $table->index('status');
-            $table->index('is_featured');
+            
         });
     }
 

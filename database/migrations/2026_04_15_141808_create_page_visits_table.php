@@ -11,8 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('innovation_updates', function (Blueprint $table) {
-            $table->date('activity_date');
+        Schema::create('page_visits', function (Blueprint $table) {
+            $table->id();
+            $table->string('page')->unique(); // contoh: 'landing'
+            $table->unsignedBigInteger('views')->default(0);
+            $table->timestamps();
         });
     }
 
@@ -21,8 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('innovation_updates', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('page_visits');
     }
 };
