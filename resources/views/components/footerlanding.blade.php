@@ -5,7 +5,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 border-b">
                 {{-- Layanan (ambil 2 kolom!) --}}
                 <div class="lg:col-span-2">
-                    <h3 class=" text-2xl font-bold tracking-wider border-b pb-3 border-teal-500">
+                    <h3 class=" text-2xl font-bold tracking-wider border-b py-3 border-teal-500">
                         Layanan
                     </h3>
 
@@ -19,7 +19,7 @@
                     </div>
                 </div>
                 <div>
-                    <h3 class=" text-2xl font-bold tracking-wider border-b pb-3 border-teal-500">
+                    <h3 class=" text-2xl font-bold tracking-wider border-b py-3 border-teal-500">
                         Informasi
                     </h3>
                     <div class="grid grid-cols-1 gap-x-6 gap-y-3 py-10">
@@ -36,7 +36,7 @@
 
         {{-- Bottom Bar --}}
         <div class="relative z-10 border-t border-white/10">
-            <div class="flex justify-between items-end gap-12 py-5 ">
+            <div class="flex justify-center items-end gap-12 py-5 ">
 
                 {{-- KIRI --}}
                 <div class="max-w-md">
@@ -60,13 +60,7 @@
                 </div>
 
                 {{-- KANAN --}}
-                <div class="flex flex-col gap-3 text-left pr-3">
-                    @foreach (config('navbar.list') as $item)
-                        <a href="{{ $item['url'] }}" class="text-xl underline hover:decoration-4 underline-offset-6">
-                            {{ $item['label'] }}
-                        </a>
-                    @endforeach
-                </div>
+
 
             </div>
             <div class="h-[1px] bg-[#0f766e] flex-1"></div>
